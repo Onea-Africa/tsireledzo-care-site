@@ -592,6 +592,10 @@ h3 {
   align-items: start;
 }
 
+.contact > * {
+  min-width: 0;
+}
+
 .contact-details ul {
   display: grid;
   gap: 18px;
@@ -632,11 +636,12 @@ h3 {
 }
 
 .spam-trap {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
+  position: fixed;
+  inset: auto auto 0 0;
+  width: 1px !important;
+  height: 1px !important;
   opacity: 0;
+  pointer-events: none;
 }
 
 .contact-form label {
@@ -799,7 +804,7 @@ h3 {
 
   .hero,
   .section {
-    width: min(100% - 32px, 1280px);
+    width: min(1280px, calc(100% - 32px));
   }
 
   .hero {
