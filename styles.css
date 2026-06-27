@@ -131,6 +131,37 @@ a {
   color: var(--primary);
 }
 
+.pdf-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(0, 22, 41, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 22, 41, 0.1);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.pdf-icon-link:hover,
+.pdf-icon-link:focus-visible {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 22, 41, 0.14);
+}
+
+.pdf-icon-link svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .button:hover,
 .button:focus-visible,
 .nav-cta:hover,
@@ -741,6 +772,10 @@ h3 {
 
   .button,
   .nav-cta {
+    width: 100%;
+  }
+
+  .pdf-icon-link {
     width: 100%;
   }
 
