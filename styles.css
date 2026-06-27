@@ -649,9 +649,10 @@ h3 {
 .onea-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 8px 12px;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 8px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   color: #ffffff;
@@ -666,14 +667,9 @@ h3 {
   transform: translateY(-1px);
 }
 
-.onea-link span {
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 600;
-}
-
 .onea-link img {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
@@ -798,6 +794,6 @@ h3 {
   }
 
   .onea-link {
-    width: fit-content;
+    width: 52px;
   }
 }
