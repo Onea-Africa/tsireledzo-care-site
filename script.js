@@ -6,6 +6,9 @@ const contactTypeSelect = form?.querySelector('[name="contactType"]');
 const organisationFields = form?.querySelector("[data-organisation-fields]");
 const organisationNameInput = form?.querySelector('[name="organisationName"]');
 const registrationNumberInput = form?.querySelector('[name="registrationNumber"]');
+const donateOpen = document.querySelector("[data-donate-open]");
+const donateClose = document.querySelector("[data-donate-close]");
+const donationModal = document.querySelector("[data-donation-modal]");
 
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
@@ -39,6 +42,37 @@ function updateOrganisationFields() {
 
 contactTypeSelect?.addEventListener("change", updateOrganisationFields);
 updateOrganisationFields();
+
+function openDonationModal() {
+  if (!donationModal) {
+    return;
+  }
+
+  donationModal.hidden = false;
+  donateClose?.focus();
+}
+
+function closeDonationModal() {
+  if (!donationModal) {
+    return;
+  }
+
+  donationModal.hidden = true;
+  donateOpen?.focus();
+}
+
+donateOpen?.addEventListener("click", openDonationModal);
+donateClose?.addEventListener("click", closeDonationModal);
+donationModal?.addEventListener("click", (event) => {
+  if (event.target === donationModal) {
+    closeDonationModal();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && donationModal && !donationModal.hidden) {
+    closeDonationModal();
+  }
+});
 
 if (form && formStatus) {
   form.addEventListener("submit", (event) => {

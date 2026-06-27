@@ -288,16 +288,47 @@
             Partner With Us
           </a>
           <a class="button secondary" href="#contact">Volunteer</a>
-          <a class="pdf-icon-link" href="assets/donations.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open donation PDF">
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M7 3h6l4 4v14H7V3Z" />
-              <path d="M13 3v5h5" />
-              <path d="M12 17s-3-1.7-3-4a1.8 1.8 0 0 1 3-1.2A1.8 1.8 0 0 1 15 13c0 2.3-3 4-3 4Z" />
-            </svg>
-            <span class="visually-hidden">Open donation PDF</span>
-          </a>
+          <button class="button secondary" type="button" data-donate-open>Donate</button>
         </div>
       </section>
+
+      <div class="donation-modal" data-donation-modal hidden>
+        <div class="donation-dialog" role="dialog" aria-modal="true" aria-labelledby="donation-title">
+          <button class="modal-close" type="button" data-donate-close aria-label="Close donation details">Close</button>
+          <p class="section-label">Donation Details</p>
+          <h2 id="donation-title">Tsireledzo Care NPC</h2>
+          <dl class="account-details">
+            <div>
+              <dt>Bank</dt>
+              <dd>First National Bank (FNB)</dd>
+            </div>
+            <div>
+              <dt>Account type</dt>
+              <dd>Gold Business Account</dd>
+            </div>
+            <div>
+              <dt>Account number</dt>
+              <dd>63120631353</dd>
+            </div>
+            <div>
+              <dt>Branch code</dt>
+              <dd>200606</dd>
+            </div>
+            <div>
+              <dt>Branch name</dt>
+              <dd>Mutsindo</dd>
+            </div>
+            <div>
+              <dt>Swift code</dt>
+              <dd>FIRNZAJJ</dd>
+            </div>
+            <div>
+              <dt>Registration number</dt>
+              <dd>2024/164390/08</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
 
       <section class="section contact" id="contact">
         <div class="contact-details">

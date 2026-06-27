@@ -131,37 +131,6 @@ a {
   color: var(--primary);
 }
 
-.pdf-icon-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(0, 22, 41, 0.14);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--primary);
-  box-shadow: 0 10px 24px rgba(0, 22, 41, 0.1);
-  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
-}
-
-.pdf-icon-link:hover,
-.pdf-icon-link:focus-visible {
-  background: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0, 22, 41, 0.14);
-}
-
-.pdf-icon-link svg {
-  width: 24px;
-  height: 24px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-}
-
 .button:hover,
 .button:focus-visible,
 .nav-cta:hover,
@@ -552,6 +521,73 @@ h3 {
   background: linear-gradient(135deg, var(--secondary-soft), var(--primary-soft));
 }
 
+.donation-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0, 22, 41, 0.58);
+}
+
+.donation-modal[hidden] {
+  display: none;
+}
+
+.donation-dialog {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: min(720px, calc(100vh - 40px));
+  overflow: auto;
+  padding: clamp(26px, 4vw, 40px);
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 28px 90px rgba(0, 22, 41, 0.28);
+}
+
+.donation-dialog h2 {
+  font-size: clamp(1.75rem, 4vw, 2.7rem);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  color: var(--primary);
+  cursor: pointer;
+  font: 700 0.85rem/1 "Be Vietnam Pro", system-ui, sans-serif;
+  padding: 10px 12px;
+}
+
+.account-details {
+  display: grid;
+  gap: 12px;
+  margin: 26px 0 0;
+}
+
+.account-details div {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.45fr) minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(195, 199, 206, 0.7);
+}
+
+.account-details dt {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.account-details dd {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 800;
+}
+
 .contact {
   align-items: start;
 }
@@ -780,13 +816,14 @@ h3 {
     width: 100%;
   }
 
-  .pdf-icon-link {
-    width: 100%;
-  }
-
   .feature-image img,
   .proof-grid img {
     height: 280px;
+  }
+
+  .account-details div {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
   .site-footer {
