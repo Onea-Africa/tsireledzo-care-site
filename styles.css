@@ -631,6 +631,14 @@ h3 {
   display: none;
 }
 
+.spam-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .contact-form label {
   display: grid;
   gap: 8px;
@@ -655,6 +663,31 @@ h3 {
 .contact-form textarea:focus {
   border-color: var(--secondary);
   outline: 3px solid rgba(61, 102, 95, 0.16);
+}
+
+.contact-form .robot-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.contact-form .robot-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--secondary);
+}
+
+.contact-form .robot-check span {
+  line-height: 1.2;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.68;
 }
 
 .form-status {

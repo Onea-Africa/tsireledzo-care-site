@@ -75,38 +75,39 @@ document.addEventListener("keydown", (event) => {
 });
 
 if (form && formStatus) {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) {
       return;
     }
 
+    const submitButton = form.querySelector('button[type="submit"]');
     const formData = new FormData(form);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const contactType = formData.get("contactType");
-    const organisationName = formData.get("organisationName");
-    const registrationNumber = formData.get("registrationNumber");
-    const message = formData.get("message");
-    const organisationLines =
-      contactType === "Organisation"
-        ? [`Organisation name: ${organisationName}`, `Registration number: ${registrationNumber}`]
-        : [];
-    const subject = encodeURIComponent(`Website enquiry from ${name}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Contacting as: ${contactType}`,
-        ...organisationLines,
-        "",
-        "Message:",
-        message,
-      ].join("\n")
-    );
 
-    window.location.href = `mailto:intouch@tsirecare.org.za?subject=${subject}&body=${body}`;
-    form.reset();
-    formStatus.textContent = "Thank you. Your email draft has been prepared for intouch@tsirecare.org.za.";
+    formStatus.textContent = "Sending your message...";
+    submitButton?.setAttribute("disabled", "true");
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("The form could not be sent.");
+      }
+
+      form.reset();
+      updateOrganisationFields();
+      formStatus.textContent = "Thank you. Your message has been sent to Tsireledzo Care.";
+    } catch (error) {
+      formStatus.textContent =
+        "Your message could not be sent right now. Please email intouch@tsirecare.org.za.";
+    } finally {
+      submitButton?.removeAttribute("disabled");
+    }
   });
 }

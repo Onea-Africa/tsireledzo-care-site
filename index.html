@@ -286,9 +286,7 @@
           </p>
         </div>
         <div class="support-actions">
-          <a class="button primary" href="mailto:intouch@tsirecare.org.za?subject=I want to support Tsireledzo Care">
-            Partner With Us
-          </a>
+          <a class="button primary" href="#contact">Partner With Us</a>
           <a class="button secondary" href="#contact">Volunteer</a>
           <button class="button secondary" type="button" data-donate-open>Donate</button>
         </div>
@@ -345,7 +343,16 @@
             <li><strong>Region</strong><span>Thulamela region, Limpopo, South Africa</span></li>
           </ul>
         </div>
-        <form class="contact-form" data-contact-form>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/intouch@tsirecare.org.za"
+          method="POST"
+          data-contact-form
+        >
+          <input type="hidden" name="_subject" value="New Tsireledzo Care website enquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" class="spam-trap" tabindex="-1" autocomplete="off" />
           <label>
             Name
             <input name="name" type="text" autocomplete="name" required />
@@ -375,6 +382,10 @@
           <label>
             Message
             <textarea name="message" rows="5" required></textarea>
+          </label>
+          <label class="robot-check">
+            <input name="notRobot" type="checkbox" value="Confirmed" required />
+            <span>I'm not a robot</span>
           </label>
           <button class="button primary" type="submit">Send Message</button>
           <p class="form-status" data-form-status role="status"></p>
