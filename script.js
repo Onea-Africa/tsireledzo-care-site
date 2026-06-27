@@ -82,6 +82,14 @@ if (form && formStatus) {
     }
 
     const submitButton = form.querySelector('button[type="submit"]');
+    const recaptchaResponse =
+      typeof grecaptcha !== "undefined" ? grecaptcha.getResponse() : "";
+
+    if (!recaptchaResponse) {
+      formStatus.textContent = "Please complete the reCAPTCHA check before sending.";
+      return;
+    }
+
     const formData = new FormData(form);
 
     formStatus.textContent = "Sending your message...";
@@ -97,15 +105,21 @@ if (form && formStatus) {
       });
 
       if (!response.ok) {
-        throw new Error("The form could not be sent.");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "The form could not be sent.");
       }
 
       form.reset();
       updateOrganisationFields();
+      if (typeof grecaptcha !== "undefined") {
+        grecaptcha.reset();
+      }
       formStatus.textContent = "Thank you. Your message has been sent to Tsireledzo Care.";
     } catch (error) {
-      formStatus.textContent =
-        "Your message could not be sent right now. Please email intouch@tsirecare.org.za.";
+      if (typeof grecaptcha !== "undefined") {
+        grecaptcha.reset();
+      }
+      formStatus.textContent = error.message || "Your message could not be sent right now.";
     } finally {
       submitButton?.removeAttribute("disabled");
     }

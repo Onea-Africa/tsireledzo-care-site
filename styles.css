@@ -665,24 +665,12 @@ h3 {
   outline: 3px solid rgba(61, 102, 95, 0.16);
 }
 
-.contact-form .robot-check {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.recaptcha-wrap {
+  min-height: 78px;
   padding: 14px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--surface-soft);
-}
-
-.contact-form .robot-check input {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--secondary);
-}
-
-.contact-form .robot-check span {
-  line-height: 1.2;
 }
 
 .contact-form button:disabled {

@@ -20,6 +20,7 @@
     <link rel="icon" href="assets/site-icon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="assets/site-icon-192.png" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <header class="site-header" data-header>
@@ -345,13 +346,10 @@
         </div>
         <form
           class="contact-form"
-          action="https://formsubmit.co/intouch@tsirecare.org.za"
+          action="contact.php"
           method="POST"
           data-contact-form
         >
-          <input type="hidden" name="_subject" value="New Tsireledzo Care website enquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
           <input type="text" name="_honey" class="spam-trap" tabindex="-1" autocomplete="off" />
           <label>
             Name
@@ -383,10 +381,9 @@
             Message
             <textarea name="message" rows="5" required></textarea>
           </label>
-          <label class="robot-check">
-            <input name="notRobot" type="checkbox" value="Confirmed" required />
-            <span>I'm not a robot</span>
-          </label>
+          <div class="recaptcha-wrap" data-recaptcha-wrap aria-label="Google reCAPTCHA verification">
+            <div class="g-recaptcha" data-sitekey="6LceFzktAAAAAMtlcwr7zXLygUQpmzXfwFQu947n"></div>
+          </div>
           <button class="button primary" type="submit">Send Message</button>
           <p class="form-status" data-form-status role="status"></p>
         </form>
