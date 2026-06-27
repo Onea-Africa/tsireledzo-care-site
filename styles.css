@@ -586,6 +586,15 @@ h3 {
   gap: 18px;
 }
 
+.organisation-fields {
+  display: grid;
+  gap: 18px;
+}
+
+.organisation-fields[hidden] {
+  display: none;
+}
+
 .contact-form label {
   display: grid;
   gap: 8px;

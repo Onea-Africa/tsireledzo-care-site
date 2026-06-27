@@ -2,6 +2,10 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const form = document.querySelector("[data-contact-form]");
 const formStatus = document.querySelector("[data-form-status]");
+const contactTypeSelect = form?.querySelector('[name="contactType"]');
+const organisationFields = form?.querySelector("[data-organisation-fields]");
+const organisationNameInput = form?.querySelector('[name="organisationName"]');
+const registrationNumberInput = form?.querySelector('[name="registrationNumber"]');
 
 if (menuToggle && nav) {
   menuToggle.addEventListener("click", () => {
@@ -17,6 +21,25 @@ if (menuToggle && nav) {
   });
 }
 
+function updateOrganisationFields() {
+  if (!contactTypeSelect || !organisationFields || !organisationNameInput || !registrationNumberInput) {
+    return;
+  }
+
+  const isOrganisation = contactTypeSelect.value === "Organisation";
+  organisationFields.hidden = !isOrganisation;
+  organisationNameInput.required = isOrganisation;
+  registrationNumberInput.required = isOrganisation;
+
+  if (!isOrganisation) {
+    organisationNameInput.value = "";
+    registrationNumberInput.value = "";
+  }
+}
+
+contactTypeSelect?.addEventListener("change", updateOrganisationFields);
+updateOrganisationFields();
+
 if (form && formStatus) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -28,13 +51,20 @@ if (form && formStatus) {
     const name = formData.get("name");
     const email = formData.get("email");
     const contactType = formData.get("contactType");
+    const organisationName = formData.get("organisationName");
+    const registrationNumber = formData.get("registrationNumber");
     const message = formData.get("message");
+    const organisationLines =
+      contactType === "Organisation"
+        ? [`Organisation name: ${organisationName}`, `Registration number: ${registrationNumber}`]
+        : [];
     const subject = encodeURIComponent(`Website enquiry from ${name}`);
     const body = encodeURIComponent(
       [
         `Name: ${name}`,
         `Email: ${email}`,
         `Contacting as: ${contactType}`,
+        ...organisationLines,
         "",
         "Message:",
         message,
