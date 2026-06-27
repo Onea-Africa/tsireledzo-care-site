@@ -390,6 +390,29 @@ h3 {
   gap: 20px;
 }
 
+.objective-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.objective-list article {
+  padding: 22px;
+  border-left: 4px solid var(--secondary);
+  border-radius: 18px;
+  background: var(--surface-soft);
+}
+
+.objective-list h3 {
+  font-size: 1.05rem;
+}
+
+.objective-list p {
+  margin-bottom: 0;
+  font-size: 0.94rem;
+}
+
 .program-card {
   min-height: 310px;
   padding: clamp(24px, 3vw, 36px);
@@ -614,6 +637,7 @@ h3 {
   }
 
   .program-grid,
+  .objective-list,
   .leader-grid,
   .proof-grid {
     grid-template-columns: 1fr;
