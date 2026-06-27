@@ -20,7 +20,29 @@ if (menuToggle && nav) {
 if (form && formStatus) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    const formData = new FormData(form);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const contactType = formData.get("contactType");
+    const message = formData.get("message");
+    const subject = encodeURIComponent(`Website enquiry from ${name}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Contacting as: ${contactType}`,
+        "",
+        "Message:",
+        message,
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:intouch@tsirecare.org.za?subject=${subject}&body=${body}`;
     form.reset();
-    formStatus.textContent = "Thank you. Your message has been prepared for the Tsireledzo Care team.";
+    formStatus.textContent = "Thank you. Your email draft has been prepared for intouch@tsirecare.org.za.";
   });
 }
